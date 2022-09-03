@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = ({ body, href, title, description }) => {
     <li className="link-card">
       <a href={href}>
         <h2>
-          {title}
+          {title} (React Card)
           <span>&rarr;</span>
         </h2>
 
