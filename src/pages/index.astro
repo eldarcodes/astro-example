@@ -1,13 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import AstroCard from "../components/Card.astro";
-import { Card, CardProps } from "../components/Card";
+import Layout from "@layouts/Layout.astro";
+import { Card } from "@components/Card";
+import type { CardProps } from "@components/Card";
+import AstroCard from "@components/Card.astro";
 
 type TCard = CardProps & {
   Component: typeof Card | typeof AstroCard;
 };
 
-const cards: TCard[] = [
+export const cards: TCard[] = [
   {
     href: "https://docs.astro.build/",
     title: "Documentation",
@@ -40,7 +41,13 @@ const cards: TCard[] = [
   <main>
     <h1>Hello Astro</h1>
     <ul role="list" class="link-card-grid">
-      {cards.map(({ Component, ...cardProps }) => <Component {...cardProps} />)}
+      {
+        cards.map(({ Component, ...cardProps }) => (
+          <Component {...cardProps}>
+            <p slot="test-area">my slot p</p>
+          </Component>
+        ))
+      }
     </ul>
   </main>
 </Layout>
